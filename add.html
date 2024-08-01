@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Recipe</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Add Recipe</h1>
+        <nav>
+            <a href="/">Home</a>
+            <a href="/add">Add Recipe</a>
+        </nav>
+    </header>
+    <main>
+        <section id="add-recipe">
+            <h2>Add a New Recipe</h2>
+            <form action="{{ url_for('add') }}" method="POST" enctype="multipart/form-data">
+                <label for="title">Title:</label>
+                <input type="text" id="title" name="title" required>
+                <label for="ingredients">Ingredients:</label>
+                <textarea id="ingredients" name="ingredients" required></textarea>
+                <label for="instructions">Instructions:</label>
+                <textarea id="instructions" name="instructions" required></textarea>
+                <label for="image_file">Image:</label>
+                <input type="file" id="image_file" name="image_file">
+                <button type="submit">Add Recipe</button>
+            </form>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Recipe App</p>
+    </footer>
+</body>
+</html>

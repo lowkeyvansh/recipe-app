@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipe App</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Recipe App</h1>
+        <nav>
+            <a href="/">Home</a>
+            <a href="/add">Add Recipe</a>
+        </nav>
+    </header>
+    <main>
+        <section id="recipes">
+            <h2>Recipes</h2>
+            <div class="recipe-list">
+                {% for recipe in recipes %}
+                <div class="recipe">
+                    <h3><a href="{{ url_for('recipe', id=recipe.id) }}">{{ recipe.title }}</a></h3>
+                    {% if recipe.image_file %}
+                    <img src="{{ url_for('static', filename='uploads/' ~ recipe.image_file) }}" alt="{{ recipe.title }}">
+                    {% endif %}
+                    <p>{{ recipe.ingredients }}</p>
+                </div>
+                {% endfor %}
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Recipe App</p>
+    </footer>
+</body>
+</html>
